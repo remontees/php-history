@@ -83,4 +83,15 @@ class History
 			return false;
 		}
 	}
+	
+	// GETTERS //
+	public function getId()
+	{
+		return $this->id;
+	}
+	
+	public function getLog()
+	{
+		return $this->log;
+	}
 }
