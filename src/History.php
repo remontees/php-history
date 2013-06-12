@@ -64,4 +64,23 @@ class History
 			return false;
 		}
 	}
+	
+	public function setDate($date)
+	{
+		$this->date = $date;
+		return true;
+	}
+	
+	public function setUser_id($user_id)
+	{
+		if (is_int($user_id) && isset($user_id))
+		{
+			$this->user_id = $user_id;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }
