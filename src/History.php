@@ -19,4 +19,49 @@ class History
 		$this->user_id = int($user_id);
 		$this->log = $log;
 	}
+	
+	/**
+	 * Méthode assignant les valeurs spécifiées aux attributs
+	 * @param $donnees array Les données à assigner
+	 * @return void
+	 */
+	public function hydrate(array $donnees)
+	{
+		foreach ($donnees as $attribut => $valeur)
+		{
+			$methode = 'set'.ucfirst($attribut);
+			
+			if (is_callable(array($this, $methode)))
+			{
+				$this->$methode($valeur);
+			}
+		}
+	}
+	
+	// SETTERS //
+	public function setId($id)
+	{
+		if (isset($id) && is_int($id))
+		{
+			$this->id = (int) $id;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public function setLog($log)
+	{
+		if (is_string($log) && isset($log))
+		{
+			$this->log = $log;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }
