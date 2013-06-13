@@ -14,4 +14,17 @@ abstract class HistoryManager
 	 * @return bool
 	 */
 	abstract protected function add(History $history);
+	
+	/**
+	 * Méthode renvoyant le nombre d'entrées d'historique total.
+	 * @return int
+	 */
+	abstract public function countAll();
+	
+	/**
+	 * Méthode renvoyant le nombre d'entrées d'historique total par membre.
+	 * @param $user_id int L'identifiant de l'utilisateur
+	 * @return int
+	 */
+	abstract public function countUser($user_id);
 }
