@@ -38,6 +38,24 @@ class History
 		}
 	}
 	
+	/**
+	 * Méthode permettant de savoir si l'entrée d'historique est nouvelle.
+	 * @return bool
+	 */
+	public function isNew()
+	{
+		return empty($this->id);
+	}
+	
+	/**
+	 * Méthode permettant de savoir si l'entrée d'historique est valide.
+	 * @return bool
+	 */
+	public function isValid()
+	{
+		return !(empty($this->log) || empty($this->date) || empty($this->user_id));
+	}
+	
 	// SETTERS //
 	public function setId($id)
 	{

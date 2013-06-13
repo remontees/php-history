@@ -51,4 +51,39 @@ abstract class HistoryManager
 	 * @return array La liste des dernières entrées d'historique du membre. Chaque entrée du tableau est un objet History.
 	 */
 	abstract public function getListLast($user_id, $nb_history);
+	
+	/**
+	 * Méthode permettant de retourner une entrée d'historique précise.
+	 * @param $id int L'identifiant de l'entrée d'historique à retourner.
+	 * @return History L'historique demandé
+	 */
+	abstract public function getUnique($id);
+	
+	/**
+	 * Méthode permettant d'enregistrer une entrée d'historique.
+	 * @param $history History L'historique à enregistrer
+	 * @see self::add()
+	 * @see self::modify()
+	 * @return bool
+	 */
+	public function save(History $history)
+	{
+		if ($history->isValid())
+		{
+			$news->isNew() ? $this->add($history) : $this->update($news);
+			return true;
+		}
+		else
+		{
+			throw new RuntimeException('L\'entrée d\'historique doit être valide pour être sauvegardée.');
+			return false;
+		}
+	}
+	
+	/**
+	 * Méthode permettant de modifier une entrée d'historique.
+	 * @param $history History L'historique à modifier.
+	 * @return bool
+	 */
+	abstract protected function update(History $history);
 }
