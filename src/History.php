@@ -94,4 +94,14 @@ class History
 	{
 		return $this->log;
 	}
+	^
+	public function getDate()
+	{
+		return $this->date;
+	}
+	
+	public function getUser_id()
+	{
+		return $this->user_id;
+	}
 }
