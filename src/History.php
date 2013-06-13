@@ -94,7 +94,7 @@ class History
 	{
 		return $this->log;
 	}
-	^
+	
 	public function getDate()
 	{
 		return $this->date;
