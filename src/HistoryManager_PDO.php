@@ -25,8 +25,7 @@ class HistoryManager_PDO extends HistoryManager
 	}
 	
 	/**
-	 * @see HistoryManager:add()
-	 * @return bool
+	 * @see HistoryManager::add()
 	 */
 	protected function add(History $history)
 	{
@@ -35,5 +34,24 @@ class HistoryManager_PDO extends HistoryManager
 		$requete->bindValue(':user_id', $history->getUser_id());
 		
 		return $requete->execute();
+	}
+	
+	/**
+	 * @see HistoryManager::countAll()
+	 */
+	public function countAll()
+	{
+		return $this->db->query('SELECT COUNT(*) FROM history')->fetchColumn();
+	}
+	
+	/**
+	 * @see HistoryManager::countUser()
+	 */
+	public function countUser($user_id)
+	{
+		$requete = $this->db->query('SELECT COUNT(*) FROM history WHERE user_id = :user_id');
+		$requete->bindValue(':user_id', $user_id);
+		
+		return $requete->fetchColumn();
 	}
 }
