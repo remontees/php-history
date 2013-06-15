@@ -13,11 +13,21 @@ class History
 	protected $date;
 	protected $user_id;
 	
-	public function __construct($user_id, $log = null)
+	/**
+	 * Constructeur de la classe qui assigne les données spécifiques à l'objet.
+	 * @param $valeurs array Les valeurs à assigner.
+	 * @return bool
+	 */
+	public function __construct($valeurs = array())
 	{
-		$this->date = new \DateTime();
-		$this->user_id = int($user_id);
-		$this->log = $log;
+		if (!empty($valeurs))
+		{
+			$this->hydrate($valeurs);
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	/**
