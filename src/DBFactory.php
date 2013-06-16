@@ -8,6 +8,10 @@
  
 class DBFactory
 {
+	/**
+	 * Méthode permettant de se connecter à la BDD MySQL avec PDO.
+	 * @return $db PDO Le DAO.
+	 */
 	public static function getMysqlConnexionWithPDO()
 	{
 		// Définition des paramètres de votre BDD, à vous de les modifier !
@@ -16,5 +20,7 @@ class DBFactory
 		
 		$db = new PDO('mysql:host=localhost;dbname=' . DB_NAME, 'root', DB_PASSWORD);
 		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		
+		return $db;
 	}
 }
